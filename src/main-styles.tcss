@@ -1,0 +1,29 @@
+VerticalGroup {
+border: solid red;
+min-height: 30;
+}
+
+HorizontalGroup {
+border: solid blue;
+min-height: 10;
+align: center middle;
+}
+
+#splash{
+}
+
+Container{
+max-height: 9;
+align: center middle; 
+border: yellow solid;
+}
+
+Button{
+margin-left: 6;
+margin-right: 6;
+height: 10;
+width: 21;
+align: center middle;
+background: black;
+border: double red;
+}
