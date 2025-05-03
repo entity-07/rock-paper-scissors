@@ -1,0 +1,82 @@
+// Import necessary modules and classes (Textual for UI, Opponent, Player, compare_guess from player_and_enemy)
+
+// Define a splash screen text (ASCII art for display)
+
+// Define a widget to display the opponent's choice
+CLASS OpponentChoice INHERITS Label
+    FUNCTION __init__()
+        INITIALIZE Label WITH "This is where the opponent's choice will appear"
+
+// Define a widget for player selection (buttons and labels)
+CLASS PlayerSelect INHERITS VerticalGroup
+    FUNCTION __init__()
+        INITIALIZE VerticalGroup
+        SET self.player = NEW Player WITH Choice.NONE
+        SET self.id = "player_select"
+    
+    // Handle button press events
+    FUNCTION on_button_pressed(event)
+        GET button_id FROM event.button.id
+        IF button_id IS "rock"
+            SET self.player.choice = ROCK
+        ELSE IF button_id IS "paper"
+            SET self.player.choice = PAPER
+        ELSE IF button_id IS "scissors"
+            SET self.player.choice = SCISSORS
+        ELSE
+            UPDATE Label WITH ID "player_choice_label" TO "This is where your choice will appear"
+        
+        // Update player's choice display
+        UPDATE Label WITH ID "player_choice_label" TO "Your Choice: " + player.choice.name
+        
+        // Create new Opponent and update opponent's choice display
+        SET opponent = NEW Opponent
+        UPDATE OpponentChoice Label TO "Opponent's choice: " + opponent.choice.name
+        
+        // Compare choices and update verdict
+        SET verdict = CALL compare_guess(self.player.choice, opponent.choice)
+        UPDATE Label WITH ID "verdict_label" TO verdict
+    
+    // Define the layout of the widget
+    FUNCTION compose()
+        YIELD HorizontalGroup WITH
+            Button WITH id="rock"
+            Button WITH id="paper"
+            Button WITH id="scissors"
+        YIELD HorizontalGroup WITH
+            Label WITH player's choice name AND id="player_choice_label"
+            Label WITH "This is where the verdict goes" AND id="verdict_label"
+            OpponentChoice widget
+
+// Define the main RockPaperScissors application
+CLASS RockPaperScissors INHERITS App
+    SET CSS_PATH = "main-styles.tcss"
+    SET BINDINGS = [Ctrl+Q to do nothing, labeled "Ctrl + Q to quit this app"]
+    
+    // On application mount
+    FUNCTION on_mount()
+        SET self.theme = "gruvbox"
+    
+    // Define no-op action for bindings
+    FUNCTION action_none()
+        PASS
+    
+    // Define the layout of the application
+    FUNCTION compose()
+        YIELD Header
+        YIELD VerticalGroup WITH
+            Container WITH splash Label AND id="splash_container"
+            Container WITH Label "Which HAND will you PLAY?" AND id="exclude"
+            PlayerSelect widget
+            Label "INSTRUCTIONS"
+            Label "1. Play this in fullscreen"
+            Label "2. Click on the palette bottom right to access settings and change the color scheme"
+            Label "3. There is no end screen, the game ends when you quit"
+            Label "4. have fun"
+            Label "json was here"
+        YIELD Footer
+
+// Main execution
+IF script is run directly
+    CREATE instance OF RockPaperScissors
+    RUN the application

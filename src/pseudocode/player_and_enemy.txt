@@ -1,0 +1,52 @@
+// Define a class for the Opponent
+CLASS Opponent
+    // Define an enumeration for possible choices
+    ENUM Choice
+        ROCK = 1
+        PAPER = 2
+        SCISSORS = 3
+    
+    // Constructor for Opponent
+    FUNCTION __init__()
+        SET self.choice = RANDOMLY SELECT ONE OF [ROCK, PAPER, SCISSORS]
+
+// Define a class for the Player
+CLASS Player
+    // Define an enumeration for possible choices
+    ENUM Choice
+        ROCK = 1
+        PAPER = 2
+        SCISSORS = 3
+        NONE = 4
+    
+    // Constructor for Player
+    FUNCTION __init__(choice)
+        SET self.choice = choice
+
+// Function to compare player's and opponent's choices
+FUNCTION compare_guess(player_choice, opponent_choice)
+    IF player_choice IS ROCK
+        IF opponent_choice IS PAPER
+            RETURN "You lose"
+        ELSE IF opponent_choice IS SCISSORS
+            RETURN "You win"
+        ELSE IF opponent_choice IS ROCK
+            RETURN "It's a draw"
+    
+    ELSE IF player_choice IS PAPER
+        IF opponent_choice IS SCISSORS
+            RETURN "You lose"
+        ELSE IF opponent_choice IS ROCK
+            RETURN "You win"
+        ELSE IF opponent_choice IS PAPER
+            RETURN "It's a draw"
+    
+    ELSE IF player_choice IS SCISSORS
+        IF opponent_choice IS ROCK
+            RETURN "You lose"
+        ELSE IF opponent_choice IS PAPER
+            RETURN "You win"
+        ELSE IF opponent_choice IS SCISSORS
+            RETURN "It's a draw"
+    
+    RETURN "Invalid choice"
