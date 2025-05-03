@@ -80,3 +80,4 @@ CLASS RockPaperScissors INHERITS App
 IF script is run directly
     CREATE instance OF RockPaperScissors
     RUN the application
+

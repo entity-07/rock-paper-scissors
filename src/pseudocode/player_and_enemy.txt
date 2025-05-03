@@ -50,3 +50,4 @@ FUNCTION compare_guess(player_choice, opponent_choice)
             RETURN "It's a draw"
     
     RETURN "Invalid choice"
+
