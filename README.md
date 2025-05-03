@@ -15,5 +15,5 @@
   - Unzip the folder
   - Do everything as if you cloned this repo
 
-If something doesn't work you prbly messed up one of the steps when you were installing python, pip, or textual
+If something doesn't work you prbly messed up one of the steps when you were installing python, pip, or textual.
 This isn't the python documentation so I'm not going to teach you how to install the prerequisites
