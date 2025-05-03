@@ -1,21 +1,23 @@
 VerticalGroup {
-border: solid red;
-min-height: 30;
-}
-
-HorizontalGroup {
-border: solid blue;
-min-height: 10;
+border: solid $primary;
 align: center middle;
 }
 
-#splash{
+Horizontal {
+align: center top;
+max-height: 10;
 }
+
+HorizontalGroup {
+align: center middle;
+}
+
 
 Container{
 max-height: 9;
+min-height: 9;
 align: center middle; 
-border: yellow solid;
+border: $primary solid;
 }
 
 Button{
@@ -24,6 +26,35 @@ margin-right: 6;
 height: 10;
 width: 21;
 align: center middle;
-background: black;
-border: double red;
+background: $panel;
+}
+
+#player_choice_label{
+border: solid $secondary-darken-3;
+min-width: 30;
+text-align: left;
+}
+
+OpponentChoice{
+border: solid $secondary-darken-3;
+min-width: 30;
+text-align: right;
+}
+
+#verdict_label{
+border: solid $secondary-darken-3;
+}
+
+#the_question{
+align: center middle;
+border: none;
+max-height: 3;
+}
+#exclude{
+border: none;
+max-height: 1;
+}
+
+#final_vert{
+border: none;
 }
